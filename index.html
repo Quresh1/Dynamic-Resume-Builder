@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Resume Builder</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto p-4">
+        <header class="text-center mb-8">
+            <h1 class="text-3xl font-bold">Dynamic Resume Builder</h1>
+        </header>
+        
+        <main class="flex flex-col md:flex-row gap-8">
+            <section id="resume-form" class="w-full md:w-1/2">
+                <h2 class="text-2xl font-semibold mb-4">Resume Information</h2>
+                <form id="resumeForm" class="space-y-4">
+                    <fieldset class="border p-4 rounded">
+                        <legend class="font-semibold">Personal Information</legend>
+                        <label for="name" class="block">Name:</label>
+                        <input type="text" id="name" name="name" required class="w-full p-2 border rounded">
+                        
+                        <label for="email" class="block mt-2">Email:</label>
+                        <input type="email" id="email" name="email" required class="w-full p-2 border rounded">
+                        
+                        <label for="phone" class="block mt-2">Phone:</label>
+                        <input type="tel" id="phone" name="phone" required class="w-full p-2 border rounded">
+                    </fieldset>
+
+                    <fieldset id="education-entries" class="border p-4 rounded">
+                        <legend class="font-semibold">Education</legend>
+                        <div class="education-entry space-y-2">
+                            <label for="degree" class="block">Degree:</label>
+                            <input type="text" class="degree w-full p-2 border rounded" name="degree[]" required>
+                            
+                            <label for="university" class="block">University:</label>
+                            <input type="text" class="university w-full p-2 border rounded" name="university[]" required>
+                            
+                            <label for="graduationYear" class="block">Graduation Year:</label>
+                            <input type="number" class="graduationYear w-full p-2 border rounded" name="graduationYear[]" required min="1900" max="2099">
+                        </div>
+                        <button type="button" id="addEducation" class="mt-2 px-4 py-2 bg-blue-500 text-white rounded">Add Education</button>
+                    </fieldset>
+
+                    <fieldset id="work-entries" class="border p-4 rounded">
+                        <legend class="font-semibold">Work Experience</legend>
+                        <div class="work-entry space-y-2">
+                            <label for="jobTitle" class="block">Job Title:</label>
+                            <input type="text" class="jobTitle w-full p-2 border rounded" name="jobTitle[]" required>
+                            
+                            <label for="company" class="block">Company:</label>
+                            <input type="text" class="company w-full p-2 border rounded" name="company[]" required>
+                            
+                            <label for="workDuration" class="block">Duration:</label>
+                            <input type="text" class="workDuration w-full p-2 border rounded" name="workDuration[]" required>
+                            
+                            <label for="responsibilities" class="block">Responsibilities:</label>
+                            <textarea class="responsibilities w-full p-2 border rounded" name="responsibilities[]" required></textarea>
+                        </div>
+                        <button type="button" id="addWork" class="mt-2 px-4 py-2 bg-blue-500 text-white rounded">Add Work Experience</button>
+                    </fieldset>
+
+                    <fieldset class="border p-4 rounded">
+                        <legend class="font-semibold">Skills</legend>
+                        <label for="skills" class="block">Skills (comma-separated):</label>
+                        <input type="text" id="skills" name="skills" required class="w-full p-2 border rounded">
+                    </fieldset>
+
+                    <div class="flex space-x-4">
+                        <button type="submit" class="px-4 py-2 bg-green-500 text-white rounded">Generate Resume</button>
+                        <button type="button" id="resetForm" class="px-4 py-2 bg-yellow-500 text-white rounded">Reset Form</button>
+                        <button type="button" id="printResume" class="px-4 py-2 bg-purple-500 text-white rounded">Print Resume</button>
+                    </div>
+                </form>
+            </section>
+
+            <section id="resume-output" class="w-full md:w-1/2">
+                <h2 class="text-2xl font-semibold mb-4">Generated Resume</h2>
+                <div id="generatedResume" class="bg-white p-4 rounded shadow">
+                    <!-- The resume will be dynamically inserted here -->
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
